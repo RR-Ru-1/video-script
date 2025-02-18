@@ -1,6 +1,4 @@
 import streamlit as st
-from regex import search
-
 from utils import generate_script
 
 st.title("🎬 视频脚本生成器")
@@ -21,6 +19,9 @@ if submit and not openai_api_key:
     st.stop()
 if submit and not subject:
     st.info("请输入视频主题")
+    st.stop()
+if submit and not video_length >= 0.1:
+    st.info("视频长度需要大于或等于0.1")
     st.stop()
 if submit:
     with st.spinner("AI 正在思考，请稍等...."):
